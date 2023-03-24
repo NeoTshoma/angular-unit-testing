@@ -1,3 +1,4 @@
+import { metaReducers, reducers } from './store/reducers/core.reducer';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -7,6 +8,10 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { ResultsViewComponent } from './components/results-view/results-view.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import {HttpClientModule} from '@angular/common/http'
+import { EffectsModule } from '@ngrx/effects';
+import { ITunesEffects } from './store/effects/itunes.effects';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -18,7 +23,14 @@ import {HttpClientModule} from '@angular/common/http'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot(reducers, {metaReducers}),
+    EffectsModule.forRoot([
+      ITunesEffects
+    ]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
