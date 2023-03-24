@@ -7,11 +7,24 @@
             </div>
             <app-loader *ngIf="(loading$ | async)"></app-loader>
 
-            <ul *ngIf="((resultList$ | async)?.length !== 0 && !((loading$ | async)))">
-                <li *ngFor="let result of (resultList$| async)">
-                    {{result?.artistName}}
-                </li>
-            </ul>
+            <ng-container *ngIf="((resultList$ | async)?.length !== 0 && !((loading$ | async)))">
+                <ng-container *ngFor="let result of (resultList$| async)">
+                    <div class="d-flex justify-content-center">
+                        <div class="row mb-4 w-50 g-0 border">
+                            <div class="col-4">
+                                <img [src]="result?.artworkUrl100" class="card-img-top" alt="...">
+                            </div>
+                            <div class="col-8">
+                                <div class="card-body">
+                                    <p class="card-text">{{result?.trackCensoredName}}</p>
+                                    <a target="_blank" [href]="result?.trackViewUrl" class="text-primary">View On
+                                        iTunes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </ng-container>
         </div>
     </div>
 </div>
