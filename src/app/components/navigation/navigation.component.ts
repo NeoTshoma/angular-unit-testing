@@ -1,4 +1,6 @@
+import { Store } from '@ngrx/store';
 import { Component } from '@angular/core';
+import { ITunesActions } from 'src/app/store';
 
 @Component({
   selector: 'app-navigation',
@@ -6,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent {
+  searchTerm = '';
+  constructor(private store: Store) {}
 
+  searchItunes() {
+    this.store.dispatch(ITunesActions.searchItunes({searchTerm: this.searchTerm}));
+  }
 }

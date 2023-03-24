@@ -1,1 +1,17 @@
-<p>results-view works!</p>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-12">
+            <div class="alert alert-warning text-center shadow shadow-lg" role="alert"
+                [hidden]="((resultList$ | async)?.length !== 0 || (loading$ | async))">
+                Please search for an artist, song or genre to continue.
+            </div>
+            <app-loader *ngIf="(loading$ | async)"></app-loader>
+
+            <ul *ngIf="((resultList$ | async)?.length !== 0 && !((loading$ | async)))">
+                <li *ngFor="let result of (resultList$| async)">
+                    {{result?.artistName}}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
