@@ -12,13 +12,16 @@ import { EffectsModule } from '@ngrx/effects';
 import { ITunesEffects } from './store/effects/itunes.effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { LoaderComponent } from './components/loader/loader.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     ResultsViewComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     ]),
     StoreDevtoolsModule.instrument({
       maxAge: 25
-    })
+    }),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

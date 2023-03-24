@@ -1,4 +1,5 @@
 import { createAction, props } from "@ngrx/store";
+import { ITunesResult } from "src/app/models/iTunes.model";
 
 export const searchItunes = createAction(
     '[Search] Search iTunes',
@@ -7,7 +8,7 @@ export const searchItunes = createAction(
 
 export const searchItunesSuccess = createAction(
     '[Search] Search iTunes Success',
-    props<{searchResults: any}>()
+    props<{searchResults: ITunesResult[]}>()
 );
 
 export const searchItunesError = createAction(

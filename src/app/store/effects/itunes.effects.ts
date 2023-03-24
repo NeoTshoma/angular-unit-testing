@@ -17,7 +17,7 @@ export class ITunesEffects {
             mergeMap(({ searchTerm }) =>
                 this.httpRequestService.searchITunes(searchTerm).pipe(
                     map((response: any) =>
-                        ITunesActions.searchItunesSuccess({ searchResults: response })
+                        ITunesActions.searchItunesSuccess({ searchResults: response?.results })
                     ),
                     catchError((errors) =>
                         of(ITunesActions.searchItunesError({ errors }))

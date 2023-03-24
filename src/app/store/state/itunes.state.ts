@@ -1,5 +1,7 @@
+import { ITunesResult } from "src/app/models/iTunes.model";
+
 export interface ITunesState {
-    iTunesSearchResults: any;
+    iTunesSearchResults: ITunesResult[] | [];
     itunesSearchLoading: boolean;
     itunesSearchError: boolean;
     itunesSearchErrors: ErrorEvent | null;
