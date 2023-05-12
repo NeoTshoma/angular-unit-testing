@@ -1,30 +1,50 @@
 <div class="container mt-3">
-    <div class="row">
-        <div class="col-12">
-            <div class="alert alert-warning text-center shadow shadow-lg" role="alert"
-                [hidden]="((resultList$ | async)?.length !== 0 || (loading$ | async))">
-                Please search for an artist, song or genre to continue.
-            </div>
-            <app-loader *ngIf="(loading$ | async)"></app-loader>
+  <div class="row">
+    <div class="col-12">
+      <div
+        class="alert alert-warning text-center shadow shadow-lg"
+        role="alert"
+        [hidden]="(resultList$ | async)?.length !== 0 || (loading$ | async)"
+      >
+        Please search for an artist, song or genre to continue.
+      </div>
+      <app-loader *ngIf="loading$ | async"></app-loader>
 
-            <ng-container *ngIf="((resultList$ | async)?.length !== 0 && !((loading$ | async)))">
-                <ng-container *ngFor="let result of (resultList$| async)">
-                    <div class="d-flex justify-content-center">
-                        <div class="row mb-4 w-50 g-0 border">
-                            <div class="col-4">
-                                <img [src]="result?.artworkUrl100" class="card-img-top" alt="...">
-                            </div>
-                            <div class="col-8">
-                                <div class="card-body">
-                                    <p class="card-text">{{result?.trackCensoredName}}</p>
-                                    <a target="_blank" [href]="result?.trackViewUrl" class="text-primary">View On
-                                        iTunes</a>
-                                </div>
-                            </div>
-                        </div>
+      <ng-container
+        *ngIf="(resultList$ | async)?.length !== 0 && !(loading$ | async)"
+      >
+        <div class="row p-0 g-0">
+          <div class="col-4">
+            <ang-music-player [audioList]="audioList"></ang-music-player>
+          </div>
+          <div class="col-8 scrollable-container">
+            <ng-container *ngFor="let result of resultList$ | async">
+              <div class="d-flex justify-content-center">
+                <div class="row mb-4 w-50 g-0 border">
+                  <div class="col-4">
+                    <img
+                      [src]="result?.artworkUrl100"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="col-8 d-flex align-items-center">
+                    <div class="card-body">
+                      <p class="card-text">{{ result?.trackCensoredName }}</p>
+                      <a
+                        target="_blank"
+                        [href]="result?.trackViewUrl"
+                        class="text-primary"
+                        >View On iTunes</a
+                      >
                     </div>
-                </ng-container>
+                  </div>
+                </div>
+              </div>
             </ng-container>
+          </div>
         </div>
+      </ng-container>
     </div>
+  </div>
 </div>

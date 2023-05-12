@@ -14,6 +14,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { LoaderComponent } from './components/loader/loader.component';
 import { FormsModule } from '@angular/forms';
+import { AngMusicPlayerModule } from 'ang-music-player';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { FormsModule } from '@angular/forms';
     StoreDevtoolsModule.instrument({
       maxAge: 25
     }),
-    FormsModule
+    FormsModule,
+    AngMusicPlayerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

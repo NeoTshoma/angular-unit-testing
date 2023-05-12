@@ -29,5 +29,6 @@ export interface ITunesResult {
     country?: string,
     currency?: string,
     primaryGenreName?: string,
-    isStreamable?: boolean
+    isStreamable?: boolean,
+    shortTrackDescription?: string
 }
