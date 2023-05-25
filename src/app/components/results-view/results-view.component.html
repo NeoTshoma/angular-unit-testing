@@ -16,6 +16,9 @@
         <div class="row p-0 g-0">
           <div class="col-4">
             <ang-music-player [audioList]="audioList"></ang-music-player>
+            <div>
+              <b>{{(resultList$ | async)?.length}} Records Found</b>
+            </div>
           </div>
           <div class="col-8 scrollable-container">
             <ng-container *ngFor="let result of resultList$ | async">
